@@ -1,0 +1,35 @@
+---
+abstract: 'Bond git and Perl::Critic to blame the right people for violations.'
+author:
+  - 'Guillaume Aubert <aubertg@cpan.org>'
+build_requires:
+  Carp: 0
+  Data::Dumper: 0
+  English: 0
+  File::Basename: 0
+  File::Path: 0
+  File::Spec: 0
+  Git::Repository: 0
+  Git::Repository::Plugin::Blame: 0
+  Perl::Critic: 0
+  Test::Deep: 0
+  Test::Exception: 0
+  Test::Git: 0
+  Test::More: 0
+configure_requires:
+  Module::Build: 0.36
+generated_by: 'Module::Build version 0.3603'
+license: artistic
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Perl-Critic-Git
+provides:
+  Perl::Critic::Git:
+    file: lib/Perl/Critic/Git.pm
+    version: v1.0.0
+requires:
+  perl: 5.006
+resources:
+  license: http://opensource.org/licenses/artistic-license.php
+version: v1.0.0
