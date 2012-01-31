@@ -7,7 +7,3 @@ severity = harsh
 # Don't require /x on small regexes.
 [RegularExpressions::RequireExtendedFormatting]
 minimum_regex_length_to_complain_about = 20
-
-# Disable policies from Perl-Critic-Swift, tests expect only core modules.
-[-Documentation::RequirePODUseEncodingUTF8]
-[-CodeLayout::RequireUseUTF8]
