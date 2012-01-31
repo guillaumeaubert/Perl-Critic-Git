@@ -1,6 +1,9 @@
 # Change default severity to harsh.
 severity = harsh
 
+# Tests expect only core modules.
+theme = core
+
 # What's wrong with tabs? They're more friendly.
 [-CodeLayout::ProhibitHardTabs]
 
