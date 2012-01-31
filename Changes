@@ -1,4 +1,9 @@
 Revision history for Perl-Critic-Git
 
+1.0.1   01/31/2012
+        * Disabled non-core PerlCritic policies to provide a known environment
+          for tests.
+        * All tests now skip correctly when Git is not installed.
+
 1.0.0   01/30/2012
-        First public version.
+        * First public version.

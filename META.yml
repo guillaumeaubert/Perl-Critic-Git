@@ -27,9 +27,9 @@ name: Perl-Critic-Git
 provides:
   Perl::Critic::Git:
     file: lib/Perl/Critic/Git.pm
-    version: v1.0.0
+    version: v1.0.1
 requires:
   perl: 5.006
 resources:
   license: http://opensource.org/licenses/artistic-license.php
-version: v1.0.0
+version: v1.0.1
