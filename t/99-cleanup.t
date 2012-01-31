@@ -7,8 +7,13 @@ use warnings;
 
 use File::Path qw();
 use Test::Exception;
-use Test::More tests => 6;
+use Test::Git;
+use Test::More;
 
+
+# Check there is a git binary available, or skip all.
+has_git();
+plan( tests => 6 );
 
 # Retrieve the path to the test git repository.
 ok(
