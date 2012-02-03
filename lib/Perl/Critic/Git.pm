@@ -303,6 +303,17 @@ sub _analyze_file
 	
 	my $file = $self->_get_file();
 	
+	# Git::Repository uses GIT_DIR and GIT_WORK_TREE to determine the path
+	# to the git repository when those environment variables are present.
+	# This however poses problems here, when those variables point to a
+	# different repository then the one the file to analyze belongs to,
+	# or when they use relative paths.
+	# To force Git::Repository to derive the git repository's path from
+	# the file path, we thus locally delete GIT_DIR and GIT_WORK_TREE.
+	local %ENV = %ENV;
+	delete( $ENV{'GIT_DIR'} );
+	delete( $ENV{'GIT_WORK_TREE'} );
+	
 	# Do a git blame on the file.
 	my ( undef, $directory, undef ) = File::Basename::fileparse( $file );
 	my $repository = Git::Repository->new( work_tree => $directory );
