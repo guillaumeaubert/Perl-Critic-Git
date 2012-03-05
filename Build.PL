@@ -33,6 +33,19 @@ my $builder = Module::Build->new(
 		'Perl-Critic-Git-*',
 	],
 	create_makefile_pl  => 'traditional',
+	configure_requires  =>
+	{
+		'Module::Build'                  => 0,
+	},
+	meta_merge          =>
+	{
+		resources                        =>
+		{
+			repository  => 'https://sourceforge.net/p/perlcriticgit/code',
+			homepage    => 'https://metacpan.org/release/Perl-Critic-Git',
+			bugtracker  => 'http://rt.cpan.org/NoAuth/ReportBug.html?Queue=perl-critic-git',
+		},
+	},
 );
 
 $builder->create_build_script();

@@ -33,7 +33,7 @@
       },
       "configure" : {
          "requires" : {
-            "Module::Build" : "0.4"
+            "Module::Build" : "0"
          }
       },
       "runtime" : {
@@ -50,9 +50,16 @@
    },
    "release_status" : "stable",
    "resources" : {
+      "bugtracker" : {
+         "web" : "http://rt.cpan.org/NoAuth/ReportBug.html?Queue=perl-critic-git"
+      },
+      "homepage" : "https://metacpan.org/release/Perl-Critic-Git",
       "license" : [
          "http://opensource.org/licenses/artistic-license.php"
-      ]
+      ],
+      "repository" : {
+         "url" : "https://sourceforge.net/p/perlcriticgit/code"
+      }
    },
    "version" : "v1.0.1"
 }

@@ -17,7 +17,7 @@ build_requires:
   Test::Git: 0
   Test::More: 0
 configure_requires:
-  Module::Build: 0.4
+  Module::Build: 0
 dynamic_config: 1
 generated_by: 'Module::Build version 0.4, CPAN::Meta::Converter version 2.120530'
 license: artistic
@@ -32,5 +32,8 @@ provides:
 requires:
   perl: 5.006
 resources:
+  bugtracker: http://rt.cpan.org/NoAuth/ReportBug.html?Queue=perl-critic-git
+  homepage: https://metacpan.org/release/Perl-Critic-Git
   license: http://opensource.org/licenses/artistic-license.php
+  repository: https://sourceforge.net/p/perlcriticgit/code
 version: v1.0.1
