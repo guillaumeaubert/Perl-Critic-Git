@@ -45,7 +45,7 @@
    "provides" : {
       "Perl::Critic::Git" : {
          "file" : "lib/Perl/Critic/Git.pm",
-         "version" : "v1.0.1"
+         "version" : "v1.1.0"
       }
    },
    "release_status" : "stable",
@@ -61,5 +61,5 @@
          "url" : "https://sourceforge.net/p/perlcriticgit/code"
       }
    },
-   "version" : "v1.0.1"
+   "version" : "v1.1.0"
 }

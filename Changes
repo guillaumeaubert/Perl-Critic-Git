@@ -1,9 +1,15 @@
 Revision history for Perl-Critic-Git
 
-1.0.1   01/31/2012
+v1.1.0  05/24/2012
+        * Fixed finding the work tree when git environment variables are
+          pointing to a different repository.
+        * Fixed setting authors in tests.
+        * Added meta information.
+
+v1.0.1  01/31/2012
         * Disabled non-core PerlCritic policies to provide a known environment
           for tests.
         * All tests now skip correctly when Git is not installed.
 
-1.0.0   01/30/2012
+v1.0.0  01/30/2012
         * First public version.
