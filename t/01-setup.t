@@ -40,8 +40,10 @@ my ( $commit1_code ) = $data =~ /<commit1>\s*(.*?)\s*<\/commit1>/sx;
 my ( $commit2_code ) = $data =~ /<commit2>\s*(.*?)\s*<\/commit2>/sx;
 
 # Set up the first author.
-$repository->run( 'config', 'user.name', 'Author1' );
-$repository->run( 'config', 'user.email', 'author1@example.com' );
+$ENV{'GIT_AUTHOR_NAME'} = 'Author1';
+$ENV{'GIT_AUTHOR_EMAIL'} = 'author1@example.com';
+$ENV{'GIT_COMMITTER_NAME'} = 'Author1';
+$ENV{'GIT_COMMITTER_EMAIL'} = 'author1@example.com';
 
 # Create a new file.
 my $test_file = $work_tree . '/test.pl';
@@ -79,8 +81,10 @@ is(
 );
 
 # Set up the second author.
-$repository->run( 'config', 'user.name', 'Author2' );
-$repository->run( 'config', 'user.email', 'author2@example.com' );
+$ENV{'GIT_AUTHOR_NAME'} = 'Author2';
+$ENV{'GIT_AUTHOR_EMAIL'} = 'author2@example.com';
+$ENV{'GIT_COMMITTER_NAME'} = 'Author2';
+$ENV{'GIT_COMMITTER_EMAIL'} = 'author2@example.com';
 
 # Modify the file.
 ok(
