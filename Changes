@@ -1,5 +1,9 @@
 Revision history for Perl-Critic-Git
 
+v1.1.1  09/23/2012
+        * Moved repository to GitHub.
+        * Cleaned up requires vs build_requires.
+
 v1.1.0  05/24/2012
         * Fixed finding the work tree when git environment variables are
           pointing to a different repository.

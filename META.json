@@ -45,7 +45,7 @@
    "provides" : {
       "Perl::Critic::Git" : {
          "file" : "lib/Perl/Critic/Git.pm",
-         "version" : "v1.1.0"
+         "version" : "v1.1.1"
       }
    },
    "release_status" : "stable",
@@ -61,5 +61,5 @@
          "url" : "https://github.com/guillaumeaubert/Perl-Critic-Git"
       }
    },
-   "version" : "v1.1.0"
+   "version" : "v1.1.1"
 }
