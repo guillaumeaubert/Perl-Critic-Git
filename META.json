@@ -58,7 +58,7 @@
          "http://www.perlfoundation.org/artistic_license_1_0"
       ],
       "repository" : {
-         "url" : "https://sourceforge.net/p/perlcriticgit/code"
+         "url" : "https://github.com/guillaumeaubert/Perl-Critic-Git"
       }
    },
    "version" : "v1.1.0"
