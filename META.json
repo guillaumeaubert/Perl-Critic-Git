@@ -6,7 +6,7 @@
    "dynamic_config" : 1,
    "generated_by" : "Module::Build version 0.4003, CPAN::Meta::Converter version 2.120921",
    "license" : [
-      "artistic_1"
+      "open_source"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
@@ -55,7 +55,7 @@
       },
       "homepage" : "https://metacpan.org/release/Perl-Critic-Git",
       "license" : [
-         "http://www.perlfoundation.org/artistic_license_1_0"
+         "http://www.gnu.org/licenses/gpl-3.0.txt"
       ],
       "repository" : {
          "url" : "https://github.com/guillaumeaubert/Perl-Critic-Git"

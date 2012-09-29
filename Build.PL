@@ -5,7 +5,7 @@ use Module::Build;
 
 my $builder = Module::Build->new(
 	module_name         => 'Perl::Critic::Git',
-	license             => 'artistic',
+	license             => 'GPL_3',
 	dist_author         => q{Guillaume Aubert <aubertg@cpan.org>},
 	dist_version_from   => 'lib/Perl/Critic/Git.pm',
 	build_requires      =>
