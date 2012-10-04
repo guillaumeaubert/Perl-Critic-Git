@@ -1,5 +1,8 @@
 Revision history for Perl-Critic-Git
 
+v1.1.2  10/03/2012
+        * Relicensed as GPLv3.
+
 v1.1.1  09/23/2012
         * Moved repository to GitHub.
         * Cleaned up requires vs build_requires.
