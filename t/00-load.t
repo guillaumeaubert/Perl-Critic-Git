@@ -1,6 +1,11 @@
 #!perl -T
 
-use Test::More tests => 1;
+use strict;
+use warnings;
+
+use Test::More tests => 2;
+use Test::NoWarnings;
+
 
 BEGIN
 {
