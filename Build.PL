@@ -44,7 +44,7 @@ my $builder = Module::Build->new(
 		{
 			repository  => 'https://github.com/guillaumeaubert/Perl-Critic-Git',
 			homepage    => 'https://metacpan.org/release/Perl-Critic-Git',
-			bugtracker  => 'http://rt.cpan.org/NoAuth/ReportBug.html?Queue=perl-critic-git',
+			bugtracker  => 'https://github.com/guillaumeaubert/Perl-Critic-Git/issues',
 		},
 	},
 );

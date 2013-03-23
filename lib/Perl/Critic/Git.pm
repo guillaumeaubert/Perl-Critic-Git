@@ -393,9 +393,10 @@ Guillaume Aubert, C<< <aubertg at cpan.org> >>.
 
 =head1 BUGS
 
-Please report any bugs or feature requests to C<bug-perl-critic-git at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Perl-Critic-Git>.  I will be notified, and then you'll
-automatically be notified of progress on your bug as I make changes.
+Please report any bugs or feature requests through the web interface at
+Lhttps://github.com/guillaumeaubert/Perl-Critic-Git/issues>.
+I will be notified, and then you'll automatically be notified of progress on
+your bug as I make changes.
 
 
 =head1 SUPPORT
@@ -409,9 +410,9 @@ You can also look for information at:
 
 =over 4
 
-=item * RT: CPAN's request tracker
+=item * GitHub (report bugs there)
 
-L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Perl-Critic-Git>
+L<https://github.com/guillaumeaubert/Perl-Critic-Git/issues>
 
 =item * AnnoCPAN: Annotated CPAN documentation
 

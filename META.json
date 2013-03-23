@@ -52,7 +52,7 @@
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
-         "web" : "http://rt.cpan.org/NoAuth/ReportBug.html?Queue=perl-critic-git"
+         "web" : "https://github.com/guillaumeaubert/Perl-Critic-Git/issues"
       },
       "homepage" : "https://metacpan.org/release/Perl-Critic-Git",
       "license" : [
