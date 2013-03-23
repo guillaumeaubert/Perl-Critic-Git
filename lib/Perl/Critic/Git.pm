@@ -17,11 +17,11 @@ Perl::Critic::Git - Bond git and Perl::Critic to blame the right people for viol
 
 =head1 VERSION
 
-Version 1.1.3
+Version 1.1.4
 
 =cut
 
-our $VERSION = '1.1.3';
+our $VERSION = '1.1.4';
 
 
 =head1 SYNOPSIS
