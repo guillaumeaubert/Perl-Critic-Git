@@ -422,9 +422,9 @@ L<http://annocpan.org/dist/Perl-Critic-Git>
 
 L<http://cpanratings.perl.org/d/Perl-Critic-Git>
 
-=item * Search CPAN
+=item * MetaCPAN
 
-L<http://search.cpan.org/dist/Perl-Critic-Git/>
+L<https://metacpan.org/release/Perl-Critic-Git>
 
 =back
 
