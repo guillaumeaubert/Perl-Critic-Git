@@ -3,16 +3,22 @@
 use strict;
 use warnings;
 
-use English qw(-no_match_vars);
 use File::Spec;
 use Test::More;
+
  
+# Only test this if we're doing release tests, not regular installation tests.
 plan( skip_all => 'Author tests not required for installation.' )
 	unless $ENV{'RELEASE_TESTING'};
 
-eval { require Test::Perl::Critic; };
+# Load Test::Perl::Critic.
+eval
+{
+	require Test::Perl::Critic;
+};
 plan( skip_all => 'Test::Perl::Critic required.' )
-	if $EVAL_ERROR;
- 
+	if $@;
+
+# Run PerlCritic.
 Test::Perl::Critic->import( -profile => '.perlcriticrc' );
 all_critic_ok();
