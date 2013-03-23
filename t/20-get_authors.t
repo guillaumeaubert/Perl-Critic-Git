@@ -10,11 +10,12 @@ use Test::Deep;
 use Test::Exception;
 use Test::Git;
 use Test::More;
+use Test::NoWarnings qw();
 
 
 # Check there is a git binary available, or skip all.
 has_git();
-plan( tests => 6 );
+plan( tests => 7 );
 
 # Retrieve the path to the test git repository.
 ok(
@@ -61,3 +62,5 @@ cmp_bag(
 	],
 	'The list of authors is correct.'
 );
+
+Test::NoWarnings::had_no_warnings();

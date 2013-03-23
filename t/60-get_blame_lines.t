@@ -10,11 +10,12 @@ use Perl::Critic::Git;
 use Test::Exception;
 use Test::Git;
 use Test::More;
+use Test::NoWarnings qw();
 
 
 # Check there is a git binary available, or skip all.
 has_git();
-plan( tests => 7 );
+plan( tests => 8 );
 
 # Retrieve the path to the test git repository.
 ok(
@@ -73,3 +74,5 @@ subtest(
 		}
 	}
 );
+
+Test::NoWarnings::had_no_warnings();

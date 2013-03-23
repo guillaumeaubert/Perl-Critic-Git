@@ -9,11 +9,12 @@ use Perl::Critic::Git;
 use Test::Exception;
 use Test::Git;
 use Test::More;
+use Test::NoWarnings qw();
 
 
 # Check there is a git binary available, or skip all.
 has_git();
-plan( tests => 4 );
+plan( tests => 5 );
 
 # Retrieve the path to the test git repository.
 ok(
@@ -44,3 +45,5 @@ is(
 	$file,
 	'Retrieve the path to the file set with new().',
 );
+
+Test::NoWarnings::had_no_warnings();
