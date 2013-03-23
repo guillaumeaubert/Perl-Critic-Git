@@ -23,6 +23,7 @@ t/50-get_perlcritic_violations.t
 t/60-get_blame_lines.t
 t/61-get_blame_line.t
 t/99-cleanup.t
+t/kwalitee.t
 t/manifest.t
 t/module_versions.t
 t/perlcritic.t
