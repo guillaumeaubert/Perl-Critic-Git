@@ -23,9 +23,9 @@ t/50-get_perlcritic_violations.t
 t/60-get_blame_lines.t
 t/61-get_blame_line.t
 t/99-cleanup.t
-t/kwalitee.t
-t/manifest.t
-t/module_versions.t
-t/perlcritic.t
-t/pod-coverage.t
-t/pod.t
+xt/kwalitee.t
+xt/manifest.t
+xt/module_versions.t
+xt/perlcritic.t
+xt/pod-coverage.t
+xt/pod.t
