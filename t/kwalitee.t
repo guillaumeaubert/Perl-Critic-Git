@@ -11,13 +11,24 @@ use Test::More;
 plan( skip_all => 'Author tests not required for installation.' )
 	unless $ENV{'RELEASE_TESTING'};
 
-# Load the Kwalitee tests.
+# Load extra tests.
 eval
 {
-	require Test::Kwalitee;
+	require Test::Kwalitee::Extra;
 };
 plan( skip_all => 'Test::Kwalitee required to evaluate code' )
 	if $@;
 
-# Run Kwalitee tests.
-Test::Kwalitee->import();
+# Run extra tests.
+Test::Kwalitee::Extra->import(
+	qw(
+		!has_example
+	)
+);
+
+# Clean up the extra file Test::Kwalitee generates.
+END
+{
+	unlink 'Debian_CPANTS.txt'
+		if -e 'Debian_CPANTS.txt';
+}
