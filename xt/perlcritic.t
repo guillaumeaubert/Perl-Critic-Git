@@ -7,10 +7,6 @@ use File::Spec;
 use Test::More;
 
  
-# Only test this if we're doing release tests, not regular installation tests.
-plan( skip_all => 'Author tests not required for installation.' )
-	unless $ENV{'RELEASE_TESTING'};
-
 # Load Test::Perl::Critic.
 eval
 {
