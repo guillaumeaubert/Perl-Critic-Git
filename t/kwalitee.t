@@ -6,7 +6,7 @@ use warnings;
 use Test::More;
 
 
-# Only test Kwalitee if were doing release tests, not regular installation
+# Only test Kwalitee if we're doing release tests, not regular installation
 # tests.
 plan( skip_all => 'Author tests not required for installation.' )
 	unless $ENV{'RELEASE_TESTING'};
