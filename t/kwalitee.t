@@ -22,6 +22,7 @@ plan( skip_all => 'Test::Kwalitee required to evaluate code' )
 # Run extra tests.
 Test::Kwalitee::Extra->import(
 	qw(
+		:optional
 		!has_example
 	)
 );
