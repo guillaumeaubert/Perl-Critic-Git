@@ -13,7 +13,7 @@ use Test::More;
 
 # Check there is a git binary available, or skip all.
 has_git();
-plan( tests => 6 );
+plan( tests => 7 );
 
 # Retrieve the path to the test git repository.
 ok(
@@ -23,6 +23,11 @@ ok(
 ok(
 	defined( my $work_tree = <$persistent> ),
 	'Retrieve the path to the test git repository.',
+);
+
+ok(
+	close( $persistent ),
+	'Close persistent information file.',
 );
 
 SKIP:
