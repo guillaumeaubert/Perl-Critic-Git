@@ -18,7 +18,6 @@ plan( skip_all => 'Test::Kwalitee required to evaluate code' )
 Test::Kwalitee::Extra->import(
 	qw(
 		:optional
-		!has_example
 	)
 );
 
