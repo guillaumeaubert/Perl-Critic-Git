@@ -9,6 +9,7 @@ META.json
 META.yml
 Makefile.PL
 README
+examples/examples.txt
 ignore.txt
 lib/Perl/Critic/Git.pm
 t/00-load.t
