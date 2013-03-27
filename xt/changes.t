@@ -6,7 +6,7 @@ use warnings;
 use Test::More;
 
 
-# Load extra tests.
+# Load test module.
 eval
 {
 	require Test::CPAN::Changes;
