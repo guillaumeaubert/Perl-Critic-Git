@@ -1,5 +1,9 @@
 Revision history for Perl-Critic-Git
 
+v1.1.5  2013-03-30
+        * Replaced Test::NoWarnings with Test::FailWarnings.
+        * Added release tests.
+
 v1.1.4  2013-03-23
         * Reorganized tests.
         * Added additional Kwalitee tests.
