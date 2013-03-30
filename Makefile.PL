@@ -8,7 +8,6 @@ WriteMakefile
   'PREREQ_PM' => {
                    'Carp' => 0,
                    'Data::Dumper' => 0,
-                   'English' => 0,
                    'File::Basename' => 0,
                    'File::Path' => 0,
                    'File::Spec' => 0,

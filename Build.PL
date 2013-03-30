@@ -40,7 +40,6 @@ my $builder = $class->new(
 	dist_version_from   => 'lib/Perl/Critic/Git.pm',
 	build_requires      =>
 	{
-		'English'                        => 0,
 		'File::Path'                     => 0,
 		'File::Spec'                     => 0,
 		'Test::Deep'                     => 0,

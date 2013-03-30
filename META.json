@@ -16,7 +16,6 @@
    "prereqs" : {
       "build" : {
          "requires" : {
-            "English" : "0",
             "File::Path" : "0",
             "File::Spec" : "0",
             "Test::Deep" : "0",
