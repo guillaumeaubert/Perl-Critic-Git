@@ -7,14 +7,14 @@ use warnings;
 
 use Git::Repository ( 'Log' );
 use Test::Exception;
+use Test::FailWarnings -allow_deps => 1;
 use Test::Git;
 use Test::More;
-use Test::NoWarnings qw();
 
 
 # Check there is a git binary available, or skip all.
 has_git();
-plan( tests => 13 );
+plan( tests => 12 );
 
 # Create a new, empty repository in a temporary location and return
 # a Git::Repository object.
@@ -120,8 +120,6 @@ ok(
 ) || diag( "Failed to open $test_file for writing: $!" );
 print $persistent $work_tree;
 close( $persistent );
-
-Test::NoWarnings::had_no_warnings();
 
 
 __DATA__

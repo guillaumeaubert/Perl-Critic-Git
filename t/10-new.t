@@ -7,14 +7,14 @@ use warnings;
 
 use Perl::Critic::Git;
 use Test::Exception;
+use Test::FailWarnings -allow_deps => 1;
 use Test::Git;
 use Test::More;
-use Test::NoWarnings qw();
 
 
 # Check there is a git binary available, or skip all.
 has_git();
-plan( tests => 9 );
+plan( tests => 8 );
 
 # Retrieve the path to the test git repository.
 ok(
@@ -83,5 +83,3 @@ dies_ok(
 	},
 	'"level" must be a valid perlcritic level.'
 );
-
-Test::NoWarnings::had_no_warnings();
