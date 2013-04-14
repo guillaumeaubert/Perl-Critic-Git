@@ -394,7 +394,7 @@ Guillaume Aubert, C<< <aubertg at cpan.org> >>.
 =head1 BUGS
 
 Please report any bugs or feature requests through the web interface at
-Lhttps://github.com/guillaumeaubert/Perl-Critic-Git/issues>.
+L<https://github.com/guillaumeaubert/Perl-Critic-Git/issues>.
 I will be notified, and then you'll automatically be notified of progress on
 your bug as I make changes.
 
