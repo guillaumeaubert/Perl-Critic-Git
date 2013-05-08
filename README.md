@@ -1,8 +1,13 @@
 Perl-Critic-Git
+===============
+
+[![Build Status](https://travis-ci.org/guillaumeaubert/Perl-Critic-Git.png?branch=master)](https://travis-ci.org/guillaumeaubert/Perl-Critic-Git)
 
 Bond git and Perl::Critic to blame the right people for violations.
 
+
 INSTALLATION
+------------
 
 To install this module, run the following commands:
 
@@ -11,29 +16,33 @@ To install this module, run the following commands:
 	./Build test
 	./Build install
 
+
 SUPPORT AND DOCUMENTATION
+-------------------------
 
 After installing, you can find documentation for this module with the
 perldoc command.
 
-    perldoc Perl::Critic::Git
+	perldoc Perl::Critic::Git
+
 
 You can also look for information at:
 
-    GitHub (report bugs here)
-        https://github.com/guillaumeaubert/Perl-Critic-Git/issues
+ * [GitHub (report bugs here)]
+   (https://github.com/guillaumeaubert/Perl-Critic-Git/issues)
 
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/Perl-Critic-Git
+ * [AnnoCPAN, Annotated CPAN documentation]
+   (http://annocpan.org/dist/Perl-Critic-Git)
 
-    CPAN Ratings
-        http://cpanratings.perl.org/d/Perl-Critic-Git
+ * [CPAN Ratings]
+   (http://cpanratings.perl.org/d/Perl-Critic-Git)
 
-    MetaCPAN
-        https://metacpan.org/release/Perl-Critic-Git
+ * [MetaCPAN]
+   (https://metacpan.org/release/Perl-Critic-Git)
 
 
 LICENSE AND COPYRIGHT
+---------------------
 
 Copyright (C) 2012-2013 Guillaume Aubert
 
