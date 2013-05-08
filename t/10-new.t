@@ -47,7 +47,7 @@ lives_ok(
 	sub
 	{
 		$git_critic = Perl::Critic::Git->new(
-			file   => 'README',
+			file   => 'README.md',
 		);
 	},
 	'Create an object without "level" to make sure it is optional.',
