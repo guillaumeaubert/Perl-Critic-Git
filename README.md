@@ -2,6 +2,7 @@ Perl-Critic-Git
 ===============
 
 [![Build Status](https://travis-ci.org/guillaumeaubert/Perl-Critic-Git.png?branch=master)](https://travis-ci.org/guillaumeaubert/Perl-Critic-Git)
+[![Coverage Status](https://coveralls.io/repos/guillaumeaubert/Perl-Critic-Git/badge.png?branch=master)](https://coveralls.io/r/guillaumeaubert/Perl-Critic-Git?branch=master)
 
 Bond git and Perl::Critic to blame the right people for violations.
 
