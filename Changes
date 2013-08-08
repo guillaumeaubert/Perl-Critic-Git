@@ -1,5 +1,11 @@
 Revision history for Perl-Critic-Git
 
+v1.2.0  2013-08-08
+        * Added support for the new cache features introduced by
+          Git::Repository::Plugin::Blame v1.1.0.
+        * Added Coveralls support.
+        * Cleaned up documentation and tests.
+
 v1.1.5  2013-03-30
         * Replaced Test::NoWarnings with Test::FailWarnings.
         * Added release tests.
