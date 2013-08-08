@@ -142,16 +142,16 @@ Parameters:
 
 =over 4
 
-=item * 'author'
+=item * author (mandatory)
 
-Mandatory, the name of the author to search violations for.
+The name of the author to search violations for.
 
-=item * 'since'
+=item * since (optional)
 
-Optional, a date (format YYYY-MM-DD) for which violations of the PBPs that are
-older will be ignored. This allows critiquing only recent changes, instead of
-forcing your author to fix an entire legacy file at once if only one line needs
-to be modified.
+A date (format YYYY-MM-DD) for which violations of the PBPs that are older will
+be ignored. This allows critiquing only recent changes, instead of forcing your
+author to fix an entire legacy file at once if only one line needs to be
+modified.
 
 =back
 
