@@ -153,6 +153,11 @@ be ignored. This allows critiquing only recent changes, instead of forcing your
 author to fix an entire legacy file at once if only one line needs to be
 modified.
 
+=item * use_cache (default: 0)
+
+Use a cached version of C<git diff> when available. See
+L<Git::Repository::Plugin::Blame::Cache> for more information.
+
 =back
 
 =cut
@@ -162,13 +167,16 @@ sub report_violations
 	my ( $self, %args ) = @_;
 	my $author = delete( $args{'author'} );
 	my $since = delete( $args{'since'} );
+	my $use_cache = delete( $args{'use_cache'} ) || 0;
 	
 	# Verify parameters.
 	croak 'The argument "author" must be passed'
 		if !defined( $author );
 	
 	# Analyze the file.
-	$self->_analyze_file();
+	$self->_analyze_file(
+		use_cache => $use_cache,
+	);
 	
 	# Run through all the violations and find the ones from the author we're
 	# interested in.
@@ -291,11 +299,22 @@ and caches the results to speed reports later.
 
 	$git_critic->_analyze_file();
 
+Arguments:
+
+=over 4
+
+=item * use_cache (default: 0)
+
+Use a cached version of C<git diff> when available.
+
+=back
+
 =cut
 
 sub _analyze_file
 {
-	my ( $self ) = @_;
+	my ( $self, %args ) = @_;
+	my $use_cache = delete( $args{'use_cache'} ) || 0;
 	
 	# If the file has already been analyzed, no need to do it again.
 	return
@@ -317,7 +336,10 @@ sub _analyze_file
 	# Do a git blame on the file.
 	my ( undef, $directory, undef ) = File::Basename::fileparse( $file );
 	my $repository = Git::Repository->new( work_tree => $directory );
-	$self->{'git_blame_lines'} = $repository->blame( $file );
+	$self->{'git_blame_lines'} = $repository->blame(
+		$file,
+		use_cache => $use_cache,
+	);
 	
 	# Run PerlCritic on the file.
 	my $critic = Perl::Critic->new(
