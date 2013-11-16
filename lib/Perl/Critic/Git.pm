@@ -31,7 +31,7 @@ our $VERSION = '1.2.0';
 		file   => $file,
 		level  => $critique_level,         # or undef to use default profile
 	);
-	
+
 	my $violations = $git_critic->report_violations(
 		author => $author,                 # or undef for all
 		since  => $date,                   # to critique only recent changes
@@ -73,7 +73,7 @@ sub new
 	my ( $class, %args ) = @_;
 	my $file = delete( $args{'file'} );
 	my $level = delete( $args{'level'} );
-	
+
 	# Check parameters.
 	croak "Argument 'file' is needed to create a Perl::Critic::Git object"
 		if !defined( $file ) || ( $file eq '' );
@@ -81,7 +81,7 @@ sub new
 		unless -e $file;
 	croak "Argument 'level' is not a valid PerlCritic level"
 		if defined( $level ) && ( $level !~ /(?:gentle|5|stern|4|harsh|3|cruel|2|brutal|1)/x );
-	
+
 	# Create the object.
 	my $self = bless(
 		{
@@ -94,7 +94,7 @@ sub new
 		},
 		$class
 	);
-	
+
 	return $self;
 }
 
@@ -110,11 +110,11 @@ Return an arrayref of all the authors found in git blame for the file analyzed.
 sub get_authors
 {
 	my ( $self ) = @_;
-	
+
 	unless ( defined( $self->{'authors'} ) )
 	{
 		my $blame_lines = $self->get_blame_lines();
-		
+
 		# Find all the authors listed.
 		my $authors = {};
 		foreach my $blame_line ( @$blame_lines )
@@ -124,7 +124,7 @@ sub get_authors
 		}
 		$self->{'authors'} = [ keys %$authors ];
 	}
-	
+
 	return $self->{'authors'};
 }
 
@@ -168,16 +168,16 @@ sub report_violations
 	my $author = delete( $args{'author'} );
 	my $since = delete( $args{'since'} );
 	my $use_cache = delete( $args{'use_cache'} ) || 0;
-	
+
 	# Verify parameters.
 	croak 'The argument "author" must be passed'
 		if !defined( $author );
-	
+
 	# Analyze the file.
 	$self->_analyze_file(
 		use_cache => $use_cache,
 	);
-	
+
 	# Run through all the violations and find the ones from the author we're
 	# interested in.
 	my $author_violations = [];
@@ -187,18 +187,18 @@ sub report_violations
 		my $line_number = $violation->line_number();
 		my $blame_line = $self->get_blame_line( $line_number );
 		my $commit_attributes = $blame_line->get_commit_attributes();
-		
+
 		# If the author doesn't match, skip.
 		next unless $commit_attributes->{'author-mail'} eq $author;
-		
+
 		# If the parameters require filtering by time, do this here before we
 		# add it to the list of violations.
 		next if defined( $since ) && $commit_attributes->{'author-time'} < $since;
-		
+
 		# It passes all the search criteria, add it to the list.
 		push( @$author_violations, $violation );
 	}
-	
+
 	return $author_violations;
 }
 
@@ -216,9 +216,9 @@ created.
 sub force_reanalyzing
 {
 	my ( $self ) = @_;
-	
+
 	$self->_is_analyzed( 0 );
-	
+
 	return 1;
 }
 
@@ -237,10 +237,10 @@ Perl::Critic on the file specified by the current object.
 sub get_perlcritic_violations
 {
 	my ( $self ) = @_;
-	
+
 	# Analyze the file.
 	$self->_analyze_file();
-	
+
 	return $self->{'perlcritic_violations'}
 }
 
@@ -257,10 +257,10 @@ to the lines in the file analyzed.
 sub get_blame_lines
 {
 	my ( $self ) = @_;
-	
+
 	# Analyze the file.
 	$self->_analyze_file();
-	
+
 	return $self->{'git_blame_lines'};
 }
 
@@ -277,15 +277,15 @@ number passed as parameter.
 sub get_blame_line
 {
 	my ( $self, $line_number ) = @_;
-	
+
 	# Verify parameters.
 	croak 'The first parameter must be an integer representing a line number in the file analyzed'
 		if !defined( $line_number ) || $line_number !~ m/^\d+$/x || $line_number == 0;
-	
+
 	my $blame_lines = $self->get_blame_lines();
 	croak 'The line number requested does not exist'
 		if $line_number > scalar( @$blame_lines );
-	
+
 	return $blame_lines->[ $line_number - 1 ];
 }
 
@@ -315,13 +315,13 @@ sub _analyze_file
 {
 	my ( $self, %args ) = @_;
 	my $use_cache = delete( $args{'use_cache'} ) || 0;
-	
+
 	# If the file has already been analyzed, no need to do it again.
 	return
 		if $self->_is_analyzed();
-	
+
 	my $file = $self->_get_file();
-	
+
 	# Git::Repository uses GIT_DIR and GIT_WORK_TREE to determine the path
 	# to the git repository when those environment variables are present.
 	# This however poses problems here, when those variables point to a
@@ -332,7 +332,7 @@ sub _analyze_file
 	local %ENV = %ENV;
 	delete( $ENV{'GIT_DIR'} );
 	delete( $ENV{'GIT_WORK_TREE'} );
-	
+
 	# Do a git blame on the file.
 	my ( undef, $directory, undef ) = File::Basename::fileparse( $file );
 	my $repository = Git::Repository->new( work_tree => $directory );
@@ -340,7 +340,7 @@ sub _analyze_file
 		$file,
 		use_cache => $use_cache,
 	);
-	
+
 	# Run PerlCritic on the file.
 	my $critic = Perl::Critic->new(
 		'-severity' => defined( $self->_get_critique_level() )
@@ -348,10 +348,10 @@ sub _analyze_file
 			: undef,
 	);
 	$self->{'perlcritic_violations'} = [ $critic->critique( $file ) ];
-	
+
 	# Flag the file as analyzed.
 	$self->_is_analyzed( 1 );
-	
+
 	return;
 }
 
@@ -368,10 +368,10 @@ analyzed with "git blame" and "PerlCritic".
 sub _is_analyzed
 {
 	my ( $self, $value ) = @_;
-	
+
 	$self->{'analysis_completed'} = $value
 		if defined( $value );
-	
+
 	return $self->{'analysis_completed'};
 }
 
@@ -387,7 +387,7 @@ Return the path to the file to analyze for the current object.
 sub _get_file
 {
 	my ( $self ) = @_;
-	
+
 	return $self->{'file'};
 }
 
@@ -403,7 +403,7 @@ Return the critique level selected when creating the current object.
 sub _get_critique_level
 {
 	my ( $self ) = @_;
-	
+
 	return $self->{'level'};
 }
 

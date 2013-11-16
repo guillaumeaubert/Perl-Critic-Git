@@ -37,7 +37,7 @@ SKIP:
 		'The git directory has already been removed.',
 		2,
 	) unless -e $work_tree;
-	
+
 	lives_ok(
 		sub
 		{
@@ -45,7 +45,7 @@ SKIP:
 		},
 		'Remove the temporary test git directory.',
 	);
-	
+
 	ok(
 		! -e $work_tree,
 		'The temporary test git directory does not exist anymore.',
@@ -59,7 +59,7 @@ SKIP:
 		'The temporary test information file has already been removed.',
 		2,
 	) unless -e $test_information;
-	
+
 	lives_ok(
 		sub
 		{
@@ -67,7 +67,7 @@ SKIP:
 		},
 		'Remove the test information file.',
 	);
-	
+
 	ok(
 		! -e $test_information,
 		'The test information file does not exist anymore.',

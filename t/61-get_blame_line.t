@@ -76,7 +76,7 @@ subtest(
 				},
 				"Retrieve line $i.",
 			);
-			
+
 			is(
 				$blame_line,
 				$blame_lines->[ $i - 1 ],
