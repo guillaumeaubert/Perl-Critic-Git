@@ -22,7 +22,7 @@ name: Perl-Critic-Git
 provides:
   Perl::Critic::Git:
     file: lib/Perl/Critic/Git.pm
-    version: v1.2.0
+    version: v1.2.1
 requires:
   Carp: '0'
   Data::Dumper: '0'
@@ -36,4 +36,4 @@ resources:
   homepage: https://metacpan.org/release/Perl-Critic-Git
   license: http://www.gnu.org/licenses/gpl-3.0.txt
   repository: https://github.com/guillaumeaubert/Perl-Critic-Git
-version: v1.2.0
+version: v1.2.1
