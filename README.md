@@ -3,6 +3,7 @@ Perl-Critic-Git
 
 [![Build Status](https://travis-ci.org/guillaumeaubert/Perl-Critic-Git.svg?branch=master)](https://travis-ci.org/guillaumeaubert/Perl-Critic-Git)
 [![Coverage Status](https://coveralls.io/repos/guillaumeaubert/Perl-Critic-Git/badge.svg?branch=master)](https://coveralls.io/r/guillaumeaubert/Perl-Critic-Git?branch=master)
+[![Latest Version](https://img.shields.io/github/tag/guillaumeaubert/Perl-Critic-Git.svg?style=flat)](https://metacpan.org/release/Perl-Critic-Git)
 
 Bond git and Perl::Critic to blame the right people for violations.
 
