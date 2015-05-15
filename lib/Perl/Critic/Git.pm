@@ -408,6 +408,15 @@ sub _get_critique_level
 }
 
 
+=head1 SEE ALSO
+
+=over 4
+
+=item * L<Perl::Critic>
+
+=back
+
+
 =head1 BUGS
 
 Please report any bugs or feature requests through the web interface at
