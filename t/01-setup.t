@@ -9,7 +9,7 @@ use Git::Repository ( 'Log' );
 use Test::Exception;
 use Test::FailWarnings -allow_deps => 1;
 use Test::Git;
-use Test::Requires::Git
+use Test::Requires::Git;
 use Test::More;
 
 
