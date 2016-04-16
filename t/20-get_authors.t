@@ -9,12 +9,12 @@ use Perl::Critic::Git;
 use Test::Deep;
 use Test::Exception;
 use Test::FailWarnings -allow_deps => 1;
-use Test::Git;
+use Test::Requires::Git;
 use Test::More;
 
 
 # Check there is a git binary available, or skip all.
-has_git();
+test_requires_git();
 plan( tests => 6 );
 
 # Retrieve the path to the test git repository.
