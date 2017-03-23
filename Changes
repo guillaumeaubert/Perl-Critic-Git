@@ -1,5 +1,11 @@
 Revision history for Perl-Critic-Git
 
+v1.3.0  2017-03-22
+        - Relicensed under Perl 5 terms.
+        - Switched to Test::Requires::Git instead of the now obsolete
+          Test::Git::has_git(). Thank you, Philippe Bruhat!
+        - Cleaned up dependencies.
+
 v1.2.1  2014-04-20
         - Fixed "package version matches dist version" for CPANTS.
         - Fixed license declared in meta files.

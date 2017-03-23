@@ -3,25 +3,25 @@ require 5.006;
 use ExtUtils::MakeMaker;
 WriteMakefile
 (
-  'PL_FILES' => {},
-  'EXE_FILES' => [],
   'NAME' => 'Perl::Critic::Git',
-  'PREREQ_PM' => {
-                   'Test::FailWarnings' => 0,
-                   'Test::Requires::Git' => '1.005',
-                   'Data::Dumper' => 0,
-                   'Test::Git' => 0,
-                   'Git::Repository::Plugin::Blame' => 0,
-                   'File::Path' => 0,
-                   'Test::More' => 0,
-                   'File::Basename' => 0,
-                   'Test::Exception' => 0,
-                   'Perl::Critic' => 0,
-                   'Test::Deep' => 0,
-                   'Git::Repository' => 0,
-                   'Carp' => 0
-                 },
   'INSTALLDIRS' => 'site',
-  'VERSION_FROM' => 'lib/Perl/Critic/Git.pm'
+  'EXE_FILES' => [],
+  'PREREQ_PM' => {
+                   'Git::Repository::Plugin::Blame' => 0,
+                   'File::Basename' => 0,
+                   'Test::More' => 0,
+                   'Test::Deep' => 0,
+                   'Perl::Critic' => 0,
+                   'Carp' => 0,
+                   'Data::Dumper' => 0,
+                   'Test::Requires::Git' => '1.005',
+                   'Git::Repository' => 0,
+                   'Test::Git' => 0,
+                   'File::Path' => 0,
+                   'Test::FailWarnings' => 0,
+                   'Test::Exception' => 0
+                 },
+  'VERSION_FROM' => 'lib/Perl/Critic/Git.pm',
+  'PL_FILES' => {}
 )
 ;
