@@ -469,7 +469,7 @@ I originally developed this project for ThinkGeek
 
 =head1 COPYRIGHT & LICENSE
 
-Copyright 2012-2017 Guillaume Aubert.
+Copyright 2012-2018 Guillaume Aubert.
 
 This code is free software; you can redistribute it and/or modify it under the
 same terms as Perl 5 itself.
