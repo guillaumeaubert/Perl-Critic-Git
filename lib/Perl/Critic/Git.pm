@@ -33,7 +33,7 @@ our $VERSION = '1.3.0';
 	);
 
 	my $violations = $git_critic->report_violations(
-		author => $author,                 # or undef for all
+		author => $author,
 		since  => $date,                   # to critique only recent changes
 	);
 
@@ -134,7 +134,7 @@ sub get_authors
 Report the violations for a given Git author.
 
 	my $violations = $git_critic->report_violations(
-		author => $author,                 # or undef for all
+		author => $author,
 		since  => $date,                   # to critique only recent changes
 	);
 
