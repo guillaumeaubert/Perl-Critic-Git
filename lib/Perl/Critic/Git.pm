@@ -72,13 +72,13 @@ sub new
 {
 	my ( $class, %args ) = @_;
 
-        foreach my $key (keys %args) {
-            croak "Argument '$key' is invalid to create a Perl::Critic::Git object"
-		unless ($key =~ /^file|level$/);
-        }
-
 	my $file = delete( $args{'file'} );
 	my $level = delete( $args{'level'} );
+
+        if (scalar(keys %args)) {
+            my $invalid_arg = join(",", keys %args);
+            croak "Invalid argument '$invalid_arg' received to create a Perl::Critic::Git object";
+        }
 
 	# Check parameters.
 	croak "Argument 'file' is needed to create a Perl::Critic::Git object"
