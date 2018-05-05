@@ -14,7 +14,7 @@ use Test::More;
 
 # Check there is a git binary available, or skip all.
 test_requires_git();
-plan( tests => 8 );
+plan( tests => 9 );
 
 # Retrieve the path to the test git repository.
 ok(
@@ -82,4 +82,15 @@ dies_ok(
 		);
 	},
 	'"level" must be a valid perlcritic level.'
+);
+dies_ok(
+	sub
+	{
+		$git_critic = Perl::Critic::Git->new(
+			file   => $work_tree . '/test.pl',
+			level  => 'harsh',
+			temp   => 'not-a-valid-argument',
+		);
+	},
+	'"temp" is not a valid parameter.'
 );
