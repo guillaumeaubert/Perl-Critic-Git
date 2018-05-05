@@ -71,6 +71,12 @@ PerlCritic profile for the system will be used.
 sub new
 {
 	my ( $class, %args ) = @_;
+
+        foreach my $key (keys %args) {
+            croak "Argument '$key' is invalid to create a Perl::Critic::Git object"
+		unless ($key =~ /^file|level$/);
+        }
+
 	my $file = delete( $args{'file'} );
 	my $level = delete( $args{'level'} );
 
