@@ -14,7 +14,7 @@ use Test::More;
 
 # Check there is a git binary available, or skip all.
 test_requires_git();
-plan( tests => 9 );
+plan( tests => 10 );
 
 # Retrieve the path to the test git repository.
 ok(
@@ -34,6 +34,16 @@ lives_ok(
 		$git_critic = Perl::Critic::Git->new(
 			file   => $work_tree . '/test.pl',
 			level  => 'harsh',
+		);
+	},
+	'Create an object with "file" and "level" set properly.',
+);
+lives_ok(
+	sub
+	{
+		$git_critic = Perl::Critic::Git->new(
+			file   => $work_tree . '/test.pl',
+			level  => 1,
 		);
 	},
 	'Create an object with "file" and "level" set properly.',

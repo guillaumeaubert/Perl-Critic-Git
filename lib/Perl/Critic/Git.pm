@@ -60,9 +60,18 @@ Mandatory, the path to a file in a Git repository.
 =item * 'level'
 
 Optional, to set a PerlCritic level. If it is not specified, the default
-PerlCritic profile for the system will be used.
+PerlCritic profile for the system will be used. Either name or number can
+assigned from the table below:
 
-#TODO: List allowed values from PerlCritic.
+    +---------------+-----------------+
+    | Severity Name | Severity Number |
+    +---------------+-----------------+
+    | gentle        | 5               |
+    | stern         | 4               |
+    | harsh         | 3               |
+    | cruel         | 2               |
+    | brutal        | 1               |
+    +---------------+-----------------+
 
 =back
 
