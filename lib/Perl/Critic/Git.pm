@@ -175,6 +175,11 @@ sub report_violations
 	my $since = delete( $args{'since'} );
 	my $use_cache = delete( $args{'use_cache'} ) || 0;
 
+        if (scalar(keys %args)) {
+            my $invalid_arg = join(",", keys %args);
+            croak "Invalid argument '$invalid_arg' passed to report_violations()";
+        }
+
 	# Verify parameters.
 	croak 'The argument "author" must be passed'
 		if !defined( $author );

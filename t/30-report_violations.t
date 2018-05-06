@@ -15,7 +15,7 @@ use Test::More;
 
 # Check there is a git binary available, or skip all.
 test_requires_git();
-plan( tests => 9 );
+plan( tests => 10 );
 
 # Retrieve the path to the test git repository.
 ok(
@@ -38,6 +38,17 @@ lives_ok(
 		);
 	},
 	'Retrieve Perl::Critic::Git object.',
+);
+
+dies_ok(
+	sub
+	{
+		$git_critic->report_violations(
+			author => 'author1@example.com',
+			temp   => 1,
+		);
+	},
+	'Invalid argument passed to report_violations().',
 );
 
 # Retrieve violations for author1.
