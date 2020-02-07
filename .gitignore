@@ -1,1 +1,4 @@
 /cover_db/
+.vstags
+cpanfile
+local/
