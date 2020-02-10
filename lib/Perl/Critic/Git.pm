@@ -317,6 +317,7 @@ sub get_blame_line
 
 =head1 INTERNAL METHODS
 
+
 =head2 _analyze_file()
 
 Run "git blame" and "PerlCritic" on the file specified by the current object
@@ -358,10 +359,9 @@ sub _analyze_file
 	delete( $ENV{'GIT_DIR'} );
 	delete( $ENV{'GIT_WORK_TREE'} );
 
+	my $repository = $self->_git_repo;
+
 	# Do a git blame on the file.
-	my ( undef, $directory, undef ) = File::Basename::fileparse( $file );
-	my $repository = Git::Repository->new( work_tree => $directory );
-	$self->{'git_repo'} = $repository;
 	$self->{'git_blame_lines'} = $repository->blame(
 		$file,
 		use_cache => $use_cache,
@@ -381,6 +381,19 @@ sub _analyze_file
 	return;
 }
 
+
+sub _git_repo {
+	my ($self) = @_;
+	if ($self->{_git_repo}) {
+		return $self->{_git_repo};
+	}
+
+	my ( undef, $directory, undef ) = File::Basename::fileparse( $self->_get_file() );
+	my $repository = Git::Repository->new( work_tree => $directory );
+	$self->{_git_repo} = $repository;
+
+	return $repository;
+}
 
 =head2 _is_analyzed()
 
@@ -474,7 +487,7 @@ sub diff_violations
 	croak 'The argument "to" must be passed'
 		if !defined( $to );
 
-	my @diff_hunks = $self->{'git_repo'}->diff($self->{'file'}, $from, $to);
+	my @diff_hunks = $self->_git_repo->diff($self->{'file'}, $from, $to);
 	my @to_lines_numbers = map { $_->[0] } map { $_->to_lines } @diff_hunks;
 
 	my @diff_violations;

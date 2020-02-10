@@ -12,3 +12,4 @@ requires 'Test::FailWarnings';
 requires 'Test::Git';
 requires 'Test::More';
 requires 'Test::Requires::Git';
+requires 'List::BinarySearch';
