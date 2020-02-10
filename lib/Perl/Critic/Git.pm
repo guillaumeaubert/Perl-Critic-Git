@@ -490,6 +490,8 @@ sub diff_violations
 	my @diff_hunks = $self->_git_repo->diff($self->{'file'}, $from, $to);
 	my @to_lines_numbers = map { $_->[0] } map { $_->to_lines } @diff_hunks;
 
+	return () unless @diff_hunks;
+
 	my @diff_violations;
 	my $perlcritic_violations = $self->get_perlcritic_violations();
 	foreach my $violation ( @$perlcritic_violations )
