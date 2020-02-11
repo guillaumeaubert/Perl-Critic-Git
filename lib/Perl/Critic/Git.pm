@@ -476,7 +476,7 @@ sub _get_critique_level
 
 =head2 diff_violations()
 
-Report the violations for a given Git author.
+Report the violations for diff between commits.
 
 	my $violations = $git_critic->diff_violations(
 		from => $from_commit,
