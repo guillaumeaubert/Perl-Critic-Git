@@ -13,6 +13,7 @@ WriteMakefile
                    'Git::Repository' => 0,
                    'Git::Repository::Plugin::Blame' => 0,
                    'Perl::Critic' => 0,
+                   'List::BinarySearch' => 0,
                    'Test::Deep' => 0,
                    'Test::Exception' => 0,
                    'Test::FailWarnings' => 0,

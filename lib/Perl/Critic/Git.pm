@@ -368,18 +368,45 @@ sub _analyze_file
 	);
 
 	# Run PerlCritic on the file.
-	my $critic = Perl::Critic->new(
-		'-severity' => defined( $self->_get_critique_level() )
-			? $self->_get_critique_level()
-			: undef,
-	);
-	$self->{'perlcritic_violations'} = [ $critic->critique( $file ) ];
+	$self->{'perlcritic_violations'} = [ $self->_critic->critique( $file ) ];
 
 	# Flag the file as analyzed.
 	$self->_is_analyzed( 1 );
 
 	return;
 }
+
+
+=head2 _critic()
+
+Lazy accessor for Perl::Critic object
+
+	my $repo = $self->_critic();
+
+=cut
+
+sub _critic {
+	my ($self) = @_;
+	if ($self->{_critic}) {
+		return $self->{_critic};
+	}
+
+	my $critic = Perl::Critic->new(
+		'-severity' => defined( $self->_get_critique_level() )
+			? $self->_get_critique_level()
+			: undef,
+	);
+	$self->{_critic} = $critic;
+	return $critic
+}
+
+=head2 _git_repo()
+
+Lazy accessor for Git::Repository object
+
+	my $repo = $self->_git_repo();
+
+=cut
 
 
 sub _git_repo {
