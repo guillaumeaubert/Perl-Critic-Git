@@ -47,7 +47,6 @@ my $builder = $class->new(
 		'Test::Git'                      => 0,
 		'Test::Requires::Git'            => 1.005,
 		'Test::More'                     => 0,
-		'Module::Build'                  => 0,
 	},
 	requires            =>
 	{
