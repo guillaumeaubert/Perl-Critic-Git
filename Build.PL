@@ -57,6 +57,7 @@ my $builder = $class->new(
 		'Git::Repository'                => 0,
 		'Git::Repository::Plugin::Blame' => 0,
 		'Git::Repository::Plugin::Diff'  => 0,
+		'List::BinarySearch'             => 0,
 		'Perl::Critic'                   => 0,
 	},
 	add_to_cleanup      =>
