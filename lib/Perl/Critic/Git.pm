@@ -6,9 +6,9 @@ use strict;
 use Carp;
 use Data::Dumper;
 use File::Basename qw();
-use Git::Repository qw( Blame );
+use Git::Repository qw( Blame Diff );
 use Perl::Critic qw();
-
+use List::BinarySearch qw();
 
 =head1 NAME
 
@@ -35,6 +35,11 @@ our $VERSION = '1.3.1';
 	my $violations = $git_critic->report_violations(
 		author => $author,
 		since  => $date,                   # to critique only recent changes
+	);
+
+	my $diff_violations = $git_critic->diff_violations(
+		from => $from_commit,
+		to   => $to_commit,
 	);
 
 
@@ -312,6 +317,7 @@ sub get_blame_line
 
 =head1 INTERNAL METHODS
 
+
 =head2 _analyze_file()
 
 Run "git blame" and "PerlCritic" on the file specified by the current object
@@ -353,21 +359,16 @@ sub _analyze_file
 	delete( $ENV{'GIT_DIR'} );
 	delete( $ENV{'GIT_WORK_TREE'} );
 
+	my $repository = $self->_git_repo;
+
 	# Do a git blame on the file.
-	my ( undef, $directory, undef ) = File::Basename::fileparse( $file );
-	my $repository = Git::Repository->new( work_tree => $directory );
 	$self->{'git_blame_lines'} = $repository->blame(
 		$file,
 		use_cache => $use_cache,
 	);
 
 	# Run PerlCritic on the file.
-	my $critic = Perl::Critic->new(
-		'-severity' => defined( $self->_get_critique_level() )
-			? $self->_get_critique_level()
-			: undef,
-	);
-	$self->{'perlcritic_violations'} = [ $critic->critique( $file ) ];
+	$self->{'perlcritic_violations'} = [ $self->_critic->critique( $file ) ];
 
 	# Flag the file as analyzed.
 	$self->_is_analyzed( 1 );
@@ -375,6 +376,51 @@ sub _analyze_file
 	return;
 }
 
+
+=head2 _critic()
+
+Lazy accessor for Perl::Critic object
+
+	my $repo = $self->_critic();
+
+=cut
+
+sub _critic {
+	my ($self) = @_;
+	if ($self->{_critic}) {
+		return $self->{_critic};
+	}
+
+	my $critic = Perl::Critic->new(
+		'-severity' => defined( $self->_get_critique_level() )
+			? $self->_get_critique_level()
+			: undef,
+	);
+	$self->{_critic} = $critic;
+	return $critic
+}
+
+=head2 _git_repo()
+
+Lazy accessor for Git::Repository object
+
+	my $repo = $self->_git_repo();
+
+=cut
+
+
+sub _git_repo {
+	my ($self) = @_;
+	if ($self->{_git_repo}) {
+		return $self->{_git_repo};
+	}
+
+	my ( undef, $directory, undef ) = File::Basename::fileparse( $self->_get_file() );
+	my $repository = Git::Repository->new( work_tree => $directory );
+	$self->{_git_repo} = $repository;
+
+	return $repository;
+}
 
 =head2 _is_analyzed()
 
@@ -425,6 +471,66 @@ sub _get_critique_level
 	my ( $self ) = @_;
 
 	return $self->{'level'};
+}
+
+
+=head2 diff_violations()
+
+Report the violations for diff between commits.
+
+	my $violations = $git_critic->diff_violations(
+		from => $from_commit,
+		to   => $to_commit,
+	);
+
+Parameters:
+
+=over 4
+
+=item * from (mandatory)
+
+Commit or branch from which we will analyze changes
+
+=item * to (mandatory)
+
+Commit or branch to which we will analyze changes
+
+=cut
+
+sub diff_violations
+{
+	my ( $self, %args ) = @_;
+	my $from = delete( $args{'from'} );
+	my $to = delete(  $args{'to'} );
+
+	if (scalar(keys %args)) {
+		my $invalid_arg = join(",", keys %args);
+		croak "Invalid argument '$invalid_arg' passed to report_violations()";
+	}
+
+	# Verify parameters.
+	croak 'The argument "from" must be passed'
+		if !defined( $from );
+	croak 'The argument "to" must be passed'
+		if !defined( $to );
+
+	my @diff_hunks = $self->_git_repo->diff($self->{'file'}, $from, $to);
+	my @to_lines_numbers = map { $_->[0] } map { $_->to_lines } @diff_hunks;
+
+	return () unless @diff_hunks;
+
+	my @diff_violations;
+	my $perlcritic_violations = $self->get_perlcritic_violations();
+	foreach my $violation ( @$perlcritic_violations )
+	{
+		my $line_number = $violation->line_number();
+		my $is_changed_line = List::BinarySearch::binsearch {$a <=> $b} $line_number, @to_lines_numbers;
+		if ($is_changed_line) {
+			push @diff_violations, $violation;
+		}
+	}
+
+	return @diff_violations;
 }
 
 
